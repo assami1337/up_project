@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chat with Bot</title>
+    <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+
+<body>
+    <div id="chat-container">
+        <div id="dropdown-menu">
+            <button id="menu-btn">⋮</button>
+            <div id="menu-options" class="hidden">
+                <button id="new-chat-btn">Новый чат</button>
+                <button id="view-history-btn">Просмотр истории</button>
+                <div id="history-viewer" class="hidden">
+                    <div id="sessions-list"></div>
+                    <button id="prev-sessions-btn">Предыдущие</button>
+                    <button id="next-sessions-btn">Следующие</button>
+                    <button id="close-history-btn">Закрыть историю</button>
+                </div>
+            </div>
+        </div>
+        <div id="chat-box"></div>
+        <div id="input-container">
+            <input type="text" id="user-input" placeholder="Введите ваш вопрос..." autofocus>
+            <button id="send-btn">Отправить</button>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>
