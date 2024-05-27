@@ -131,8 +131,6 @@ function showChatHistory() {
 
     document.getElementById('prev-sessions-btn').disabled = sessionPage === 0;
     document.getElementById('next-sessions-btn').disabled = end >= sessions.length;
-
-    document.getElementById('history-viewer').classList.remove('hidden');
 }
 
 function loadSession(sessionId) {
@@ -141,12 +139,18 @@ function loadSession(sessionId) {
     closeMenuAndHistory();
 }
 
-function closeHistory() {
-    document.getElementById('history-viewer').classList.add('hidden');
+function toggleHistory() {
+    var historyViewer = document.getElementById('history-viewer');
+    if (historyViewer.classList.contains('hidden')) {
+        showChatHistory();
+        historyViewer.classList.remove('hidden');
+    } else {
+        historyViewer.classList.add('hidden');
+    }
 }
 
 function closeMenuAndHistory() {
-    closeHistory();
+    document.getElementById('history-viewer').classList.add('hidden');
     toggleMenu();
 }
 
@@ -156,8 +160,7 @@ function formatSessionId(sessionId) {
 }
 
 document.getElementById('new-chat-btn').addEventListener('click', createNewChat);
-document.getElementById('view-history-btn').addEventListener('click', showChatHistory);
-document.getElementById('close-history-btn').addEventListener('click', closeHistory);
+document.getElementById('view-history-btn').addEventListener('click', toggleHistory);
 document.getElementById('prev-sessions-btn').addEventListener('click', function() {
     sessionPage--;
     showChatHistory();
@@ -184,7 +187,7 @@ document.getElementById('sessions-list').addEventListener('click', function(even
 });
 
 function fetchAnswer(query) {
-    fetch('http://37.146.70.89:5000/search', {
+    fetch('http://89.178.97.46:5000/search', {
         method: 'POST',
         body: JSON.stringify({ question: query }),
         headers: {
